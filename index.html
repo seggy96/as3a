@@ -4,70 +4,153 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapela - Social Media Challenge</title>
+    <!-- Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Outfit:wght@300;500;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #0056b3;
-            --secondary-color: #f39c12;
-            --bg-color: #f8f9fa;
-            --text-color: #333333;
-            --card-bg: #ffffff;
+            /* Default (Cyberpunk) palette */
+            --bg-main: #0f0a1f;
+            --bg-card: #1a103c;
+            --color-primary: #39ff14;
+            --color-secondary: #b026ff;
+            --text-main: #f0f0f0;
+            --text-muted: #a8a0c0;
+            --card-bg-start: rgba(26,16,60,0.9);
+            --card-bg-end: rgba(15,10,31,0.9);
+        }
+
+        /* 10 Design Themes */
+        [data-theme="cyberpunk"] {
+            --bg-main: #0f0a1f; --bg-card: #1a103c; --color-primary: #39ff14; --color-secondary: #b026ff; --text-main: #f0f0f0; --text-muted: #a8a0c0; --card-bg-start: rgba(26,16,60,0.9); --card-bg-end: rgba(15,10,31,0.9);
+        }
+        [data-theme="light"] {
+            --bg-main: #f4f7f6; --bg-card: #ffffff; --color-primary: #0056b3; --color-secondary: #f39c12; --text-main: #111111; --text-muted: #555555; --card-bg-start: rgba(255,255,255,0.95); --card-bg-end: rgba(240,240,240,0.95);
+        }
+        [data-theme="dark"] {
+            --bg-main: #121212; --bg-card: #1e1e1e; --color-primary: #4dabf7; --color-secondary: #fa5252; --text-main: #e4e4e4; --text-muted: #999999; --card-bg-start: rgba(30,30,30,0.9); --card-bg-end: rgba(20,20,20,0.9);
+        }
+        [data-theme="sunset"] {
+            --bg-main: #2b0f2a; --bg-card: #451a42; --color-primary: #ffb703; --color-secondary: #fb8500; --text-main: #ffffff; --text-muted: #ffddd2; --card-bg-start: rgba(69,26,66,0.9); --card-bg-end: rgba(43,15,42,0.9);
+        }
+        [data-theme="ocean"] {
+            --bg-main: #001219; --bg-card: #005f73; --color-primary: #0a9396; --color-secondary: #94d2bd; --text-main: #e9d8a6; --text-muted: #94d2bd; --card-bg-start: rgba(0,95,115,0.9); --card-bg-end: rgba(0,18,25,0.9);
+        }
+        [data-theme="forest"] {
+            --bg-main: #1b4332; --bg-card: #2d6a4f; --color-primary: #74c69d; --color-secondary: #d8f3dc; --text-main: #ffffff; --text-muted: #b7e4c7; --card-bg-start: rgba(45,106,79,0.9); --card-bg-end: rgba(27,67,50,0.9);
+        }
+        [data-theme="monochrome"] {
+            --bg-main: #000000; --bg-card: #111111; --color-primary: #ffffff; --color-secondary: #aaaaaa; --text-main: #ffffff; --text-muted: #777777; --card-bg-start: rgba(17,17,17,0.9); --card-bg-end: rgba(0,0,0,0.9);
+        }
+        [data-theme="synthwave"] {
+            --bg-main: #2b0f4c; --bg-card: #150626; --color-primary: #00f0ff; --color-secondary: #ff003c; --text-main: #ffffff; --text-muted: #b5a1cc; --card-bg-start: rgba(21,6,38,0.9); --card-bg-end: rgba(10,3,18,0.9);
+        }
+        [data-theme="coffee"] {
+            --bg-main: #d4a373; --bg-card: #faedcd; --color-primary: #606c38; --color-secondary: #283618; --text-main: #283618; --text-muted: #606c38; --card-bg-start: rgba(250,237,205,0.95); --card-bg-end: rgba(233,213,171,0.95);
+        }
+        [data-theme="matrix"] {
+            --bg-main: #000000; --bg-card: #001100; --color-primary: #00ff41; --color-secondary: #008f11; --text-main: #00ff41; --text-muted: #008f11; --card-bg-start: rgba(0,17,0,0.9); --card-bg-end: rgba(0,0,0,0.9);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
             line-height: 1.6;
             padding: 2rem;
-            font-size: 1.2rem;
+            min-height: 100vh;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden;
         }
 
         header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
         }
 
         h1 {
-            font-size: 3.5rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .subtitle {
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.5rem;
             font-weight: 600;
-            color: #666;
+            color: var(--color-primary);
+            letter-spacing: 4px;
+            text-transform: uppercase;
         }
 
         .container {
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-            max-width: 1400px;
+            grid-template-columns: 1fr 400px;
+            gap: 2.5rem;
+            max-width: 1500px;
             margin: 0 auto;
         }
 
         .card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            background: linear-gradient(180deg, var(--card-bg-start) 0%, var(--card-bg-end) 100%);
+            border: 1px solid var(--color-secondary);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            transition: background 0.5s ease, border-color 0.5s ease;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
         }
 
         h2 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            border-bottom: 3px solid var(--secondary-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: var(--color-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--color-primary);
+        }
+
+        .mission-intro {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px dashed var(--color-secondary);
         }
 
         ul {
@@ -75,87 +158,266 @@
         }
 
         li {
-            margin-bottom: 1.5rem;
-            padding-left: 2.5rem;
+            margin-bottom: 2rem;
             position: relative;
-            font-size: 1.3rem;
-        }
-
-        li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: var(--secondary-color);
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .highlight {
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .resource-link {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            padding: 1rem 2rem;
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            background: rgba(0,0,0,0.1);
+            padding: 1.5rem;
             border-radius: 8px;
-            margin-top: 1rem;
-            transition: background 0.3s ease;
+            border-left: 4px solid var(--color-secondary);
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.5s ease;
         }
 
-        .resource-link:hover {
-            background-color: #004494;
+        [data-theme="light"] li, [data-theme="coffee"] li {
+            background: rgba(0,0,0,0.03);
+        }
+
+        li:hover {
+            transform: translateX(10px);
+            border-left-color: var(--color-primary);
+        }
+
+        .step-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .step-time {
+            color: var(--color-primary);
+            font-size: 1rem;
+            font-family: monospace;
+            float: right;
+            background: rgba(0,0,0,0.2);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .resource-card {
+            text-align: center;
+        }
+
+        .resource-card p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 100%;
+            background: transparent;
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 1.2rem 2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 8px;
+            border: 2px solid;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            z-index: -2;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-website { border-color: var(--color-secondary); }
+        .btn-website::before { background-color: var(--color-secondary); }
+        
+        .btn-assets { border-color: var(--color-primary); }
+        .btn-assets::before { background-color: var(--color-primary); }
+
+        .btn:hover::before { width: 100%; }
+        .btn:hover {
+            color: var(--bg-main);
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
         }
 
         .timer-container {
             text-align: center;
-            background: var(--primary-color);
-            color: white;
+            border-color: var(--color-primary);
         }
 
-        .timer-container h2 {
-            color: white;
-            border-bottom-color: rgba(255,255,255,0.3);
-        }
+        .timer-container h2 { justify-content: center; }
+        .timer-container h2::before { display: none; }
 
         #timer {
-            font-size: 5rem;
-            font-weight: bold;
+            font-family: 'Space Grotesk', monospace;
+            font-size: 6rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            line-height: 1;
+            margin: 2rem 0;
+            text-shadow: 0 0 20px var(--color-primary);
             font-variant-numeric: tabular-nums;
-            margin: 1rem 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        button {
-            background-color: var(--secondary-color);
-            color: white;
+        .btn-start {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+        .btn-start::before { background-color: var(--color-primary); }
+        .btn-start:hover { color: var(--bg-main); }
+
+        .pulse-red {
+            color: #ff2a2a !important;
+            text-shadow: 0 0 30px rgba(255, 42, 42, 0.6) !important;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- THEME PANEL STYLES --- */
+        .theme-panel {
+            position: fixed;
+            right: -320px;
+            top: 0;
+            width: 320px;
+            height: 100vh;
+            background: var(--bg-card);
+            border-left: 1px solid var(--color-secondary);
+            box-shadow: -5px 0 30px rgba(0,0,0,0.5);
+            transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .theme-panel.open { right: 0; }
+        
+        .fab-toggle {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            width: 70px;
+            height: 70px;
+            background: var(--color-primary);
+            color: var(--bg-main);
             border: none;
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            font-weight: bold;
+            border-radius: 50%;
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            z-index: 1001;
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .fab-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+            background: var(--color-secondary);
+            color: #fff;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .theme-btn-selector {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            background: var(--bg-main);
+            color: var(--text-main);
+            border: 1px solid var(--color-secondary);
             border-radius: 8px;
             cursor: pointer;
-            transition: transform 0.1s ease;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .theme-btn-selector:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            transform: translateX(-5px);
         }
 
-        button:active {
-            transform: scale(0.95);
+        @media (max-width: 1200px) {
+            .container { grid-template-columns: 1fr; }
+            .sidebar { display: grid; grid-template-columns: 1fr 1fr; }
         }
-
-        @media (max-width: 1024px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
+        
+        @media (max-width: 768px) {
+            .sidebar { grid-template-columns: 1fr; }
+            h1 { font-size: 2.5rem; }
+            #timer { font-size: 4rem; }
+            .theme-panel { width: 260px; right: -260px; }
+            .fab-toggle { width: 60px; height: 60px; bottom: 20px; right: 20px; font-size: 2rem; }
         }
     </style>
 </head>
 <body>
+
+    <!-- Theme Panel -->
+    <div class="theme-panel" id="themePanel">
+        <h3 style="margin-bottom: 1.5rem; font-family: 'Space Grotesk'; color: var(--color-primary); font-size: 1.5rem;">Choose Theme</h3>
+        
+        <button class="theme-btn-selector" onclick="setTheme('cyberpunk')">Cyberpunk <span>🟣🟢</span></button>
+        <button class="theme-btn-selector" onclick="setTheme('light')">Corporate Light <span>⚪🔵</span></button>
+        <button class="theme-btn-selector" onclick="setTheme('dark')">Corporate Dark <span>⚫🔵</span></button>
+        <button class="theme-btn-selector" onclick="setTheme('sunset')">Sunset Vibe <span>🌇🟠</span></button>
+        <button class="theme-btn-selector" onclick="setTheme('ocean')">Deep Ocean <span>🌊🦈</span></button>
+        <button class="theme-btn-selector" onclick="setTheme('forest')">Forest Eco <span>🌲🌿</span></button>
+        <button class="theme-btn-selector" onclick="setTheme('monochrome')">Monochrome <span>⬛⬜</span></button>
+        <button class="theme-btn-selector" onclick="setTheme('synthwave')">Synthwave <span>💽🚥</span></button>
+        <button class="theme-btn-selector" onclick="setTheme('coffee')">Coffee Shop <span>☕🤎</span></button>
+        <button class="theme-btn-selector" onclick="setTheme('matrix')">The Matrix <span>🕶️🟩</span></button>
+    </div>
+
+    <!-- Floating Toggle Button -->
+    <button class="fab-toggle" onclick="toggleThemePanel()" title="Změnit styl">
+        🎨
+    </button>
 
     <header>
         <h1>Mapela Agency Brief</h1>
@@ -163,45 +425,56 @@
     </header>
 
     <div class="container">
+        <!-- Main Task Section -->
         <main class="card">
             <h2>Your Mission</h2>
-            <p style="margin-bottom: 1.5rem; font-size: 1.4rem;">
-                You are the new <span class="highlight">Social Media Managers</span> for <strong>Mapela</strong>. Your task is to create an engaging vertical video (Story/Reels format) to promote their products using Figma or Canva.
+            <p class="mission-intro">
+                You are the new <strong style="color: var(--color-secondary);">Social Media Managers</strong> for <strong>Mapela</strong>. Your task is to create an engaging vertical video (Story/Reels format) to promote their products using Figma or Canva.
             </p>
 
             <h2>Step-by-Step Instructions</h2>
             <ul>
                 <li>
-                    <span class="highlight">Step 1: Research (15 mins)</span><br>
+                    <span class="step-time">[ 15 MINS ]</span>
+                    <span class="step-title">Step 1: Research</span>
                     Visit the client's website. Find key information, technical specs, or benefits about "rubble sacks" (pytle na suť) or "custom tarps" (průmyslové plachty).
                 </li>
                 <li>
-                    <span class="highlight">Step 2: Strategy & Copywriting (15 mins)</span><br>
-                    Review the provided raw video files. Decide what text overlays, catchphrases, and Call to Action (CTA) you will use to grab attention.
+                    <span class="step-time">[ 15 MINS ]</span>
+                    <span class="step-title">Step 2: Strategy & Copywriting</span>
+                    Review the provided raw video files and photos. Decide what <strong style="color: var(--color-primary);">text overlays, catchphrases, and Call to Action (CTA)</strong> you will use to grab attention. You must also create the <strong style="color: var(--color-secondary);">accompanying text/captions (textaci)</strong> for each of your posts.
                 </li>
                 <li>
-                    <span class="highlight">Step 3: Video Production (40 mins)</span><br>
+                    <span class="step-time">[ 40 MINS ]</span>
+                    <span class="step-title">Step 3: Video Production</span>
                     Use Canva or Figma to edit the video. Format: Vertical (9:16), length: 10-15 seconds. Combine the video clips with the text information you found on the website.
                 </li>
                 <li>
-                    <span class="highlight">Step 4: The Pitch (20 mins)</span><br>
-                    Present your final Story to the class. Explain your marketing strategy and why you chose specific texts and visuals.
+                    <span class="step-time">[ 20 MINS ]</span>
+                    <span class="step-title">Step 4: The Pitch via GitHub Pages</span>
+                    Compile your final marketing strategy, created visuals, videos, and captions into a simple webpage. Host it on <strong style="color: var(--color-primary);">GitHub Pages</strong> and use this live link to present your campaign to the class!
                 </li>
             </ul>
         </main>
 
-        <aside>
-            <div class="card" style="margin-bottom: 2rem; text-align: center;">
-                <h2>Client Website</h2>
-                <p>Find all product details here:</p>
-                <a href="https://www.mapela.cz" target="_blank" class="resource-link">www.mapela.cz</a>
+        <!-- Sidebar (Resources & Timer) -->
+        <aside class="sidebar">
+            
+            <div class="card resource-card">
+                <h2>Resources</h2>
+                <p>Find product details here:</p>
+                <a href="https://www.mapela.cz" target="_blank" class="btn btn-website" style="margin-bottom: 1.5rem;">www.mapela.cz</a>
+                
+                <p>Raw photos & videos:</p>
+                <a href="https://tinyurl.com/2j3fzhjc" target="_blank" class="btn btn-assets">Download Assets</a>
             </div>
 
             <div class="card timer-container">
                 <h2>Time Remaining</h2>
                 <div id="timer">90:00</div>
-                <button id="startBtn" onclick="startTimer()">START TIMER</button>
+                <button id="startBtn" class="btn btn-start" onclick="startTimer()">Initiate Sequence</button>
             </div>
+
         </aside>
     </div>
 
@@ -218,8 +491,10 @@
                 String(minutes).padStart(2, '0') + ':' + 
                 String(seconds).padStart(2, '0');
 
-            if (timeInSeconds <= 300) { // Last 5 minutes
-                display.style.color = '#ff6b6b';
+            if (timeInSeconds <= 300 && timeInSeconds > 0) { // Last 5 minutes
+                display.classList.add('pulse-red');
+            } else {
+                display.classList.remove('pulse-red');
             }
         }
 
@@ -234,13 +509,39 @@
                     updateDisplay();
                 } else {
                     clearInterval(timerInterval);
-                    document.getElementById('timer').textContent = "TIME'S UP!";
+                    const display = document.getElementById('timer');
+                    display.textContent = "00:00";
+                    display.classList.remove('pulse-red');
+                    display.style.color = '#ff2a2a';
                 }
             }, 1000);
         }
 
         // Initialize display
         updateDisplay();
+
+        // Theme Panel Logic
+        function toggleThemePanel() {
+            document.getElementById('themePanel').classList.toggle('open');
+        }
+
+        function setTheme(themeName) {
+            document.documentElement.setAttribute('data-theme', themeName);
+            localStorage.setItem('selectedMapelaTheme', themeName);
+            
+            // Auto-close panel on mobile screens
+            if(window.innerWidth <= 768) {
+                document.getElementById('themePanel').classList.remove('open');
+            }
+        }
+
+        // Load saved theme on load
+        const savedTheme = localStorage.getItem('selectedMapelaTheme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else {
+            setTheme('cyberpunk'); // Fallback default
+        }
     </script>
 
 </body>
