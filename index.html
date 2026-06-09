@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapela - Social Media Challenge</title>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #f39c12;
+            --bg-color: #f8f9fa;
+            --text-color: #333333;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 2rem;
+            font-size: 1.2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            margin-bottom: 1.5rem;
+            padding-left: 2.5rem;
+            position: relative;
+            font-size: 1.3rem;
+        }
+
+        li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .resource-link {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 8px;
+            margin-top: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .resource-link:hover {
+            background-color: #004494;
+        }
+
+        .timer-container {
+            text-align: center;
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .timer-container h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+        }
+
+        #timer {
+            font-size: 5rem;
+            font-weight: bold;
+            font-variant-numeric: tabular-nums;
+            margin: 1rem 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Mapela Agency Brief</h1>
+        <div class="subtitle">Social Media Marketing Challenge</div>
+    </header>
+
+    <div class="container">
+        <main class="card">
+            <h2>Your Mission</h2>
+            <p style="margin-bottom: 1.5rem; font-size: 1.4rem;">
+                You are the new <span class="highlight">Social Media Managers</span> for <strong>Mapela</strong>. Your task is to create an engaging vertical video (Story/Reels format) to promote their products using Figma or Canva.
+            </p>
+
+            <h2>Step-by-Step Instructions</h2>
+            <ul>
+                <li>
+                    <span class="highlight">Step 1: Research (15 mins)</span><br>
+                    Visit the client's website. Find key information, technical specs, or benefits about "rubble sacks" (pytle na suť) or "custom tarps" (průmyslové plachty).
+                </li>
+                <li>
+                    <span class="highlight">Step 2: Strategy & Copywriting (15 mins)</span><br>
+                    Review the provided raw video files. Decide what text overlays, catchphrases, and Call to Action (CTA) you will use to grab attention.
+                </li>
+                <li>
+                    <span class="highlight">Step 3: Video Production (40 mins)</span><br>
+                    Use Canva or Figma to edit the video. Format: Vertical (9:16), length: 10-15 seconds. Combine the video clips with the text information you found on the website.
+                </li>
+                <li>
+                    <span class="highlight">Step 4: The Pitch (20 mins)</span><br>
+                    Present your final Story to the class. Explain your marketing strategy and why you chose specific texts and visuals.
+                </li>
+            </ul>
+        </main>
+
+        <aside>
+            <div class="card" style="margin-bottom: 2rem; text-align: center;">
+                <h2>Client Website</h2>
+                <p>Find all product details here:</p>
+                <a href="https://www.mapela.cz" target="_blank" class="resource-link">www.mapela.cz</a>
+            </div>
+
+            <div class="card timer-container">
+                <h2>Time Remaining</h2>
+                <div id="timer">90:00</div>
+                <button id="startBtn" onclick="startTimer()">START TIMER</button>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        let timeInSeconds = 90 * 60; // 90 minutes
+        let timerInterval;
+        let isRunning = false;
+
+        function updateDisplay() {
+            const minutes = Math.floor(timeInSeconds / 60);
+            const seconds = timeInSeconds % 60;
+            const display = document.getElementById('timer');
+            display.textContent = 
+                String(minutes).padStart(2, '0') + ':' + 
+                String(seconds).padStart(2, '0');
+
+            if (timeInSeconds <= 300) { // Last 5 minutes
+                display.style.color = '#ff6b6b';
+            }
+        }
+
+        function startTimer() {
+            if (isRunning) return;
+            isRunning = true;
+            document.getElementById('startBtn').style.display = 'none';
+            
+            timerInterval = setInterval(() => {
+                if (timeInSeconds > 0) {
+                    timeInSeconds--;
+                    updateDisplay();
+                } else {
+                    clearInterval(timerInterval);
+                    document.getElementById('timer').textContent = "TIME'S UP!";
+                }
+            }, 1000);
+        }
+
+        // Initialize display
+        updateDisplay();
+    </script>
+
+</body>
+</html>
